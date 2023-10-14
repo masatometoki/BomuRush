@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour
@@ -22,7 +21,7 @@ public class TitleController : MonoBehaviour
     void Update()
     {
         SelectImage();
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Return)) 
         {
             switch (selectImage)
             {
@@ -65,7 +64,7 @@ public class TitleController : MonoBehaviour
     //Start‚ğ‰Ÿ‚µ‚½Œã‚Ìˆ—
     private void SelectOneActivation()
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        SceneLoader.Instance.LoadScene("TurtrialScene");
     }
     //End‚ğ‰Ÿ‚µ‚½Œã‚Ìˆ—
     private void SelectTwoActivation()

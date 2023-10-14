@@ -30,13 +30,13 @@ public class TurtrialController : MonoBehaviour
                 ShowSelectedCanvas();
                 Debug.Log("プレイヤー選択中" + selectCanvas.ToString());
             }
-            else if (selectCanvas < 2)
+            else if (selectCanvas == 2)
             {
                 selectCanvas++;
                 ShowSelectedCanvas();
                 Debug.Log("プレイヤー選択中" + selectCanvas.ToString());
             }
-            else if (selectCanvas < 3)
+            else if (selectCanvas == 3)
             {
                 selectCanvas++;
                 ShowSelectedCanvas();
@@ -45,19 +45,19 @@ public class TurtrialController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            if (selectCanvas > 1)
+            if (selectCanvas == 1)
             {
                 selectCanvas--;
                 ShowSelectedCanvas();
                 Debug.Log("プレイヤー選択中" + selectCanvas.ToString());
             }
-            else if (selectCanvas > 2)
+            else if (selectCanvas == 2)
             {
                 selectCanvas--;
                 ShowSelectedCanvas();
                 Debug.Log("プレイヤー選択中" + selectCanvas.ToString());
             }
-            else if (selectCanvas > 3)
+            else if (selectCanvas == 3)
             {
                 selectCanvas--;
                 ShowSelectedCanvas();
@@ -70,15 +70,29 @@ public class TurtrialController : MonoBehaviour
     {
         if (selectCanvas == 1)
         {
-            
+            firstCanvas.enabled = true;
+            secondCanvas.enabled = false;
+            threeCanvas.enabled = false;
         }
         else if (selectCanvas == 2)
         {
-           
+            firstCanvas.enabled = false;
+            secondCanvas.enabled = true;
+            threeCanvas.enabled = false;
         }
         else if (selectCanvas == 3)
         {
-
+            firstCanvas.enabled = false;
+            secondCanvas.enabled = false;
+            threeCanvas.enabled = true;
+        }
+        else if (selectCanvas == 4)
+        {
+            
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneLoader.Instance.LoadScene("GameScene");
+            }
         }
     }
 }
