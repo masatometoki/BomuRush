@@ -14,7 +14,7 @@ public class ItemDataVase : MonoBehaviour
         //1つ目のアイテム
         items[1] = new Item(
             "ボム＋",
-            "一度におけるボムの数が増加",
+            "ボムの数が増加",
             1,
             1,
             Resources.Load<Sprite>("BomuIcon"));
