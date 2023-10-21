@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float speed = 3.0f;
+    [SerializeField]
+    private float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.position += speed * transform.forward * Time.deltaTime;
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {

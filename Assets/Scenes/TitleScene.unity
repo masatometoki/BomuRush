@@ -276,6 +276,7 @@ MonoBehaviour:
   - TitleScene
   - TurtrialScene
   - GameScene
+  - ResultScene
 --- !u!1 &552276094
 GameObject:
   m_ObjectHideFlags: 0

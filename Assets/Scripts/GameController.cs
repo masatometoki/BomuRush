@@ -6,29 +6,58 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public float countdownDuration = 3f; // カウントダウンの時間（秒）
-    public Text countdownText; // テキストオブジェクト
+    [SerializeField]
+    private float startCountdownTimer = 3f; // 最初のカウントダウンの時間
+
+    [SerializeField]
+    private float gameCountdownTimer = 60f; // プレイ中のカウントダウンの時間
+
+    [SerializeField]
+    private Text startCountdownText; // 最初のカウントテキストオブジェクト
+
+    [SerializeField]
+    private Text gameCountdownText; // プレイ中のカウントテキストオブジェクト
+
+    [SerializeField]
+    private Text finishText; //フィニッシュを表示するテキスト
 
     private void Start()
     {
         StartCoroutine(StartCountdown());
     }
 
+    //ゲーム開始前のカウントダウン
     private IEnumerator StartCountdown()
     {
-        float timer = countdownDuration;
+        float startCount = startCountdownTimer;
        
-
-        while (timer > 0)
+        while (startCount > 0)
         {            
-            countdownText.text = timer.ToString("F0"); // F0で小数点以下を除いた整数表示にする
+            startCountdownText.text = startCount.ToString("F0"); 
             yield return new WaitForSeconds(1f);
-            timer--;
+            startCount--;
         }
 
-        // カウントダウン終了後、テキストを表示
-        countdownText.text = "スタート!";
+        startCountdownText.text = "スタート!";
         yield return new WaitForSeconds(1f);
-        Destroy(countdownText);
+        Destroy(startCountdownText);
+        StartCoroutine(CountDown());
+    }
+
+    //ゲーム開始後のカウントダウン
+    private IEnumerator CountDown()
+    {
+        float gameCount = gameCountdownTimer;
+
+        while (gameCount > 0)
+        {
+            gameCountdownText.text = gameCount.ToString("F0");
+            yield return new WaitForSeconds(1f);
+            gameCount--;
+        }
+        Destroy(gameCountdownText);
+        finishText.text = "フィニッシュ!";
+        yield return new WaitForSeconds(3f);
+        SceneLoader.Instance.LoadScene("ResultScene");       
     }
 }
